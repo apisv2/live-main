@@ -1,0 +1,95 @@
+{% extends "opti/base.html" %} 
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<style>
+    .content-table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .15);
+    }
+
+    .content-table thead tr{
+    background-color: #0c0b0b;
+    color: rgb(255, 255, 255);
+    text-align: left;
+    font-weight: bold;
+    }
+
+    .content-table th,
+    .content-table td{
+        padding: 12px 15px;
+    }
+
+    .content-table tbody tr{
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .content-table tbody tr:nth-of-type(even){
+        background-color: #f3f3f3;
+    }
+
+    .content-table tbody tr:last-of-type{
+        border-bottom: 2px soldi #009879;
+    }
+
+    .content-table tbody tr td img{
+    height: 180px;
+    width: 280px;
+    }
+
+    .content-table tbody tr td a img{
+    height: 30px;
+    width: 30px;
+    }
+</style>
+<a href="{% url 'state' %}" class="btn btn-dark my-3"> Go Back </a>
+
+<form method="POST" action="">{% csrf_token%}
+    {{ form|crispy }}
+    <br>
+    <input class="btn btn-outline-info" type="submit" value="Search"/>
+</form>
+<br>
+<table class="content-table">
+    <thead>
+        <tr>
+            <th>COUNT</th>
+            <th>PREVIEW</th>
+            <th>CATEGORY</th>
+            <th>SHOP</th>
+            <th>QUANTITY</th>
+            <th>CODE</th>
+            <th>EXPIRATION DATE</th>
+            <th>DELETE</th>
+        </tr>
+    </thead>
+    {% for instance in queryset %}
+    <tbody>
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            {% if instance.photo %}
+                <td>
+                    <img src="{{ instance.photo.url }}" style=" height: 200px; width:200px;">
+                </td>
+            {% else %}
+                <td>
+                    <img href="https://cdn-icons-png.flaticon.com/512/860/860829.png">{{ instance.photo }}
+                </td>
+            {% endif %}
+            <td>{{ instance.coupon_type }}</td>
+            <td><a href="{% url 'update' instance.id %}">{{instance.shop }}</a></td>
+            <td>{{ instance.quantity }}</td>
+            <td>{{ instance.code }}</td>
+            <td>{{ instance.end }}</td>
+            <td><a href="{% url 'delete' instance.id %}"><img src="https://cdn-icons-png.flaticon.com/512/860/860829.png" style="height: 20px; width:20px;"></a></td>
+        </tr>
+    </tbody>
+    {% endfor %}
+    </table>
+{% endblock content %}

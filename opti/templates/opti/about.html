@@ -1,0 +1,52 @@
+{% extends "opti/base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'opti/style.css' %}">
+
+<section class="header">
+<div class="text-box">
+    <h1>RECYCLING, TOGETHER</h1>
+    <p>The global emission of methane gases from textile landfills have been increasing incrementally. 
+        <br> Every effort counts in reducing pollution. Therefore, the participation of each individual is vital. <br>LUCE helps individuals make smarter choices in disposing preloved clothes.
+    </p>
+
+</div>
+</section>
+<!----Course-->
+
+<section class="course">
+<h1>OUR MECHANISM</h1>
+<p>We help users engage in the effort of recycling preloved clothes by providing initiative in the form of <br>coupons, rebates and vouchers. 
+    Users can join in on the action by heeding the following steps:</p>
+<div class="row">
+    <div class="course-col">
+        <h3>1) SORT</h3>
+        <p>Users sort their preloved clothes into three main categories which are men, women and children. This helps in the weighing process used to determine the amount of points received.</p>
+    </div>
+    <div class="course-col">
+        <h3>2) SCAN</h3>
+        <p>Users will be provided with a receipt which has a QR code by the operator on-duty after sending their clothes. An email prompt will appear when the user scans the QR code. The user then has to send the verification code from the receipt through the email prompt.</p>
+    </div>
+    <div class="course-col">
+        <h3>3) REWARD</h3>
+        <p>After the code has been certified, the server administrator will upload the coupon reward that corresponds with the user's donation. The coupon rewards are given based on a weight-point system.</p>
+    </div>
+</div>
+</section>
+
+
+<section class="footer">
+    <h4>Contacts</h4>
+    <div class="icons">
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-twitter"></i>
+        <i class="fa fa-instagram"></i>
+        <i class="fa fa-linkedin"></i>
+    </div>
+    <p>Made with <i class="fa fa-heart-o"></i> by the LUCE team
+    </p>
+</section>
+
+
+{% endblock content %}
+
